@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fleet software for robotics teams | {{TODO: name}}</title>
+<title>Fleet software for robotics teams | Arcfield</title>
 <meta name="description" content="I build the ops dashboards, live telemetry and log pipelines your robots need in the field, so your autonomy engineers can stay on autonomy. Built and rolled out this stack for autonomous yard trucks at Outrider.">
 <link rel="canonical" href="{{TODO: https://your-domain.com/}}">
 <meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)">
@@ -12,6 +12,7 @@
 
 <!-- Link previews (LinkedIn, Slack, email). og:url and og:image need absolute URLs. -->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Arcfield">
 <meta property="og:title" content="Fleet software for robotics teams">
 <meta property="og:description" content="Ops dashboards, live telemetry and log pipelines for robots in the field. Built and rolled out this stack for autonomous yard trucks at Outrider.">
 <meta property="og:url" content="{{TODO: https://your-domain.com/}}">
@@ -176,7 +177,18 @@ h2 { font-size: clamp(28px, 4vw, 40px); max-width: 22ch; }
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 24px 24px;
 }
-.frame-body video, .frame-body iframe, .frame-body img { width: 100%; height: 100%; border: 0; display: block; }
+.frame-body:has(> svg, > video, > iframe, > img) { padding: 0; }
+.frame-body video, .frame-body iframe, .frame-body img, .frame-body svg { width: 100%; height: 100%; border: 0; display: block; }
+.yard .stall { fill: none; stroke: var(--rule); stroke-width: 2; }
+.yard .lane { fill: none; stroke: var(--rule); stroke-width: 2; stroke-dasharray: 24 18; }
+.yard .parked { fill: var(--muted); opacity: .22; }
+.yard text { font: 600 17px var(--mono); fill: var(--muted); letter-spacing: .06em; }
+.yard text.live { fill: var(--accent); }
+.yard .still { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .yard .anim { display: none; }
+  .yard .still { display: inline; }
+}
 
 /* Process */
 .steps { list-style: none; padding: 0; margin: 44px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: s; }
@@ -206,6 +218,7 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
 }
 @media (max-width: 480px) {
   body { font-size: 16px; }
+  .yard text { font-size: 30px; }
   .btn { width: 100%; justify-content: center; }
   .card { padding: 22px; }
 }
@@ -216,7 +229,7 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top"><mark class="todo">{{TODO: name or studio name}}</mark></a>
+    <a class="brand" href="#top">Arcfield</a>
     <nav aria-label="Primary"><a href="#contact">Book a call</a></nav>
   </div>
 </header>
@@ -231,7 +244,7 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
       <p class="sub">I build the ops dashboards, live telemetry and log pipelines your robots need in the field, so your autonomy engineers can stay on autonomy.</p>
       <p class="cred">Built and rolled out this stack for autonomous yard trucks at Outrider.</p>
       <div class="btns">
-        <a class="btn" href="#TODO-booking-link">Book a 20-min call <span aria-hidden="true">→</span></a>
+        <a class="btn" href="https://calendly.com/shubhv2/30min" rel="noopener">Book a 30-min call <span aria-hidden="true">→</span></a>
         <a class="link-mono" href="mailto:shubhv2@gmail.com">shubhv2@gmail.com</a>
       </div>
     </div>
@@ -309,17 +322,56 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
   <div class="wrap">
     <p class="label"><b>02</b> / Demo</p>
     <h2 id="demo-h">A simulated fleet dashboard</h2>
-    <p class="lede">A short walkthrough of the kind of ops dashboard I build, running against a simulated fleet.</p>
+    <p class="lede">An animated illustration of what my fleet tools track: a simulated yard truck and trailer moving through a yard.</p>
     <div class="frame">
       <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i>&nbsp;fleet-ops<span>● SIM</span></div>
       <div class="frame-body">
         <!--
-          Replace the <mark> below with ONE of:
+          Replace the <svg> animation below with ONE of these to show a real recording:
           <video src="demo.mp4" poster="demo-poster.jpg" controls muted playsinline preload="none" aria-label="Demo of a simulated fleet dashboard"></video>
           <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Demo of a simulated fleet dashboard" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
           <img src="demo.gif" alt="Demo of a simulated fleet dashboard" loading="lazy">
         -->
-        <mark class="todo" role="img" aria-label="Demo video placeholder">{{TODO: demo video, 60–90s}}</mark>
+        <svg class="yard" viewBox="0 0 960 540" role="img" aria-label="Animated illustration: an autonomous yard truck towing a trailer through a parking yard, with its sensor field sweeping ahead">
+          <defs>
+            <radialGradient id="cone-fill" gradientUnits="userSpaceOnUse" cx="45" cy="0" r="170">
+              <stop offset="0" style="stop-color:var(--accent);stop-opacity:.55"/>
+              <stop offset="1" style="stop-color:var(--accent);stop-opacity:0"/>
+            </radialGradient>
+            <!-- Trailer: origin at the rear axle, kingpin at x=170, facing +x -->
+            <g id="trailer">
+              <rect x="-30" y="-17" width="208" height="34" rx="3" style="fill:var(--muted)"/>
+              <path d="M-12 -17v34M150 -17v34" style="stroke:var(--surface);stroke-width:2;opacity:.5"/>
+            </g>
+            <!-- Tractor: origin at the fifth wheel, facing +x, sensor cone ahead of the nose -->
+            <g id="tractor">
+              <path d="M45 0L200.3 -69.1A170 170 0 0 1 200.3 69.1Z" fill="url(#cone-fill)"/>
+              <g style="fill:none;stroke:var(--accent);stroke-width:2">
+                <path d="M99.8 -24.4A60 60 0 0 1 99.8 24.4" opacity="0"><animate attributeName="opacity" values="0;.8;0" dur="1.5s" begin="0s" repeatCount="indefinite"/></path>
+                <path d="M145.5 -44.7A110 110 0 0 1 145.5 44.7" opacity="0"><animate attributeName="opacity" values="0;.6;0" dur="1.5s" begin=".5s" repeatCount="indefinite"/></path>
+                <path d="M191.2 -65A160 160 0 0 1 191.2 65" opacity="0"><animate attributeName="opacity" values="0;.4;0" dur="1.5s" begin="1s" repeatCount="indefinite"/></path>
+              </g>
+              <rect x="-22" y="-15" width="67" height="30" rx="5" style="fill:var(--text)"/>
+              <rect x="36" y="-11" width="4" height="22" rx="1" style="fill:var(--accent)"/>
+              <circle cx="0" cy="0" r="5" style="fill:var(--muted)"/>
+            </g>
+          </defs>
+          <path class="stall" d="M40 190H920M40 350H920M40 50V190M120 50V190M200 50V190M280 50V190M360 50V190M440 50V190M520 50V190M600 50V190M680 50V190M760 50V190M840 50V190M920 50V190M40 350V490M120 350V490M200 350V490M280 350V490M360 350V490M440 350V490M520 350V490M600 350V490M680 350V490M760 350V490M840 350V490M920 350V490"/>
+          <path class="lane" d="M0 270H960"/>
+          <g class="parked"><rect x="58" y="58" width="44" height="124" rx="4"/><rect x="218" y="58" width="44" height="124" rx="4"/><rect x="298" y="58" width="44" height="124" rx="4"/><rect x="458" y="58" width="44" height="124" rx="4"/><rect x="698" y="58" width="44" height="124" rx="4"/><rect x="778" y="58" width="44" height="124" rx="4"/><rect x="138" y="358" width="44" height="124" rx="4"/><rect x="218" y="358" width="44" height="124" rx="4"/><rect x="378" y="358" width="44" height="124" rx="4"/><rect x="538" y="358" width="44" height="124" rx="4"/><rect x="618" y="358" width="44" height="124" rx="4"/><rect x="858" y="358" width="44" height="124" rx="4"/></g>
+          <!-- Drive path: enters off-screen left, shifts lanes, exits off-screen right. 0.094 ≈ trailer length / path length. -->
+          <g class="anim">
+            <use href="#trailer"><animateMotion dur="14s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyTimes="0;1" keyPoints="0;0.906" path="M-400 300H360C460 300 500 240 600 240H1400"/></use>
+            <use href="#tractor"><animateMotion dur="14s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyTimes="0;1" keyPoints="0.094;1" path="M-400 300H360C460 300 500 240 600 240H1400"/></use>
+          </g>
+          <g class="still">
+            <use href="#trailer" transform="translate(590 240)"/>
+            <use href="#tractor" transform="translate(760 240)"/>
+          </g>
+          <text x="24" y="32" class="live">● TRK-07 · AUTONOMOUS</text>
+          <text x="936" y="32" text-anchor="end">MISSION 0412</text>
+          <text x="24" y="524">SIMULATED</text>
+        </svg>
       </div>
     </div>
   </div>
@@ -355,7 +407,7 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
     <p class="label"><b>04</b> / Process</p>
     <h2 id="process-h">How engagements work</h2>
     <ol class="steps">
-      <li><h3>20-min call</h3><p>You tell me about your robots, your ops team and where things hurt in the field.</p></li>
+      <li><h3>30-min call</h3><p>You tell me about your robots, your ops team and where things hurt in the field.</p></li>
       <li><h3>Fixed-scope, fixed-price proposal</h3><p>Deliverables and timeline in writing, so you know exactly what you're getting.</p></li>
       <li><h3>Build, document and hand off</h3><p>Working software, docs and runbooks your team can run and extend.</p></li>
     </ol>
@@ -382,9 +434,9 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
   <div class="wrap">
     <p class="label"><b>06</b> / Contact</p>
     <h2 id="contact-h">Have robots in the field? Let's talk.</h2>
-    <p class="lede">Twenty minutes is enough to tell whether I can help.</p>
+    <p class="lede">Thirty minutes is enough to tell whether I can help.</p>
     <div class="btns">
-      <a class="btn" href="#TODO-booking-link">Book a 20-min call <span aria-hidden="true">→</span></a>
+      <a class="btn" href="https://calendly.com/shubhv2/30min" rel="noopener">Book a 30-min call <span aria-hidden="true">→</span></a>
       <a class="link-mono" href="mailto:shubhv2@gmail.com">shubhv2@gmail.com</a>
     </div>
   </div>
@@ -394,9 +446,9 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
 
 <footer>
   <div class="wrap">
-    <span>© 2026 <mark class="todo">{{TODO: name}}</mark></span>
+    <span>© 2026 Arcfield</span>
     <ul>
-      <li><a href="#TODO-linkedin">LinkedIn</a></li>
+      <li><a href="https://www.linkedin.com/in/shubh-vashisht/" rel="noopener">LinkedIn</a></li>
       <li><a href="#TODO-github">GitHub</a></li>
     </ul>
   </div>

@@ -13,7 +13,7 @@ Unfilled placeholders are highlighted in amber on the rendered page, so they're 
 Where things are:
 - **Colors**: CSS custom properties at the top of `<style>` (`:root` for light mode, the `prefers-color-scheme: dark` block for dark mode). `--accent` is the green.
 - **Sections**: each has an `id` (`top`, `work`, `demo`, `services`, `process`, `about`, `contact`) and plain HTML structure. Copy a `.card` to add a case study.
-- **Demo**: replace the `<mark>` inside `.frame-body`. Snippets for `<video>`, YouTube and GIF are in the HTML comment right above it.
+- **Demo**: an inline SVG animation (`#demo`, `<svg class="yard">`). Speed is the `dur` on the two `<animateMotion>` elements (keep them equal), and the route is their `path`. The `.still` group is the static frame shown to visitors who prefer reduced motion. To use a real recording instead, replace the `<svg>` with one of the snippets in the HTML comment above it.
 
 ## Preview locally
 
