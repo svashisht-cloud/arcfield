@@ -14,7 +14,8 @@ grep -n 'TODO[:-]' index.html
 - [x] **Email**: shubhv2@gmail.com (hero and final CTA)
 - [x] **Fleet ops dashboard result**: 2× faster vehicle reprogramming (React-based reprogramming view)
 - [x] **Event-triggered data capture result**: 90% smaller ROS bags (selective recording of high-value topics); 50% less time to access data (bag recording and cloud-upload improvements)
-- [x] **Robotic-arm 3D visualization result**: 85% performance improvement
+- [x] **Robotic-arm card**: problem, what I built, ~85% visualization performance result
+- [x] **Field reliability tooling result**: config-mismatch detection, selective log subscriptions, faster remote debugging
 
 ## Identity
 - [ ] **Name / studio name**: search `{{TODO: name`. Appears in the `<title>`, the header brand and the footer ©.
@@ -24,11 +25,7 @@ grep -n 'TODO[:-]' index.html
 - [ ] **Location / hours line**: search `{{TODO: e.g. "Remote` (About section).
 
 ## Case studies
-- [ ] **Field reliability tooling result**: search `{{TODO: result}}`. Use a real number only, or rewrite as a plain outcome.
-- [ ] **Robotic-arm card: problem**: search `{{TODO: robotic-arm problem`.
-- [ ] **Robotic-arm card: what I built**: search `{{TODO: robotic-arm what I built`. Also say what the 85% measures (e.g. frame rate, load time, render time).
-
-Also re-read the **Problem** lines on the case-study cards (I drafted them) and make sure they match what really happened.
+Re-read the **Problem** lines on the first three case-study cards (Claude drafted them) and make sure they match what really happened.
 
 ## Demo
 - [ ] **Demo video / GIF** (60–90s, simulated fleet dashboard): search `{{TODO: demo video`. The HTML comment right above it has ready-to-paste `<video>`, YouTube `<iframe>` and `<img>` snippets.
