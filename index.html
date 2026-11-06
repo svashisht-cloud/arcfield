@@ -149,25 +149,16 @@ h2 { font: 400 clamp(40px, 5.4vw, 60px)/1 var(--display); color: var(--text); te
 .fleet { margin: 0; border: 1px solid var(--rule-strong); background: var(--surface); font-size: 12px; box-shadow: 0 24px 60px rgba(0,0,0,.45); }
 .fleet-bar { display: flex; justify-content: space-between; gap: 10px; padding: 8px 12px; border-bottom: 1px solid var(--rule-strong); background: var(--raise); color: var(--muted); font-size: 11.5px; }
 .fleet-bar b { color: var(--accent); font-weight: 500; }
-.pulse { animation: pulse 1.6s ease-in-out infinite; }
-@keyframes pulse { 50% { opacity: .25; } }
-.kpis { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--rule-strong); }
-.kpis div { padding: 7px 12px 6px; border-right: 1px solid var(--rule); }
-.kpis div:last-child { border-right: 0; }
-.kpis span { display: block; font-size: 10px; color: var(--dim); text-transform: uppercase; letter-spacing: .08em; }
-.kpis b { font: 400 28px/1 var(--display); color: var(--text); }
-.kpis .ok b { color: var(--accent); }
-.kpis .alert b { color: var(--amber); }
 .fmap { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--rule-strong); }
 .fmap .stall { fill: none; stroke: var(--rule-strong); stroke-width: 1; }
 .fmap .lane { fill: none; stroke: var(--rule-strong); stroke-width: 1; stroke-dasharray: 9 7; }
 .fmap .plan { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 2 5; stroke-linecap: round; opacity: .55; }
-.fmap .id { font: 600 10px var(--mono); fill: var(--text); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; }
+.fmap .parked { opacity: .4; }
+.fmap .id { font: 600 12px var(--mono); fill: var(--text); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; }
 .fmap .id.warn { fill: var(--amber); }
-.fmap .ring-warn { fill: none; stroke: var(--amber); stroke-width: 1.5; }
 .ftable { width: 100%; border-collapse: collapse; font-size: 11.5px; }
-.ftable th { text-align: left; font-weight: 400; font-size: 10px; color: var(--dim); text-transform: uppercase; letter-spacing: .08em; padding: 7px 10px 4px; }
-.ftable td { padding: 4px 10px; border-top: 1px solid var(--rule); white-space: nowrap; }
+.ftable th { text-align: left; font-weight: 400; font-size: 10px; color: var(--dim); text-transform: uppercase; letter-spacing: .08em; padding: 9px 12px 5px; }
+.ftable td { padding: 7px 12px; border-top: 1px solid var(--rule); white-space: nowrap; }
 .ftable td:first-child { color: var(--text); font-weight: 500; }
 .ftable .st { color: var(--accent); }
 .ftable .st::before { content: "● "; }
@@ -175,10 +166,6 @@ h2 { font: 400 clamp(40px, 5.4vw, 60px)/1 var(--display); color: var(--text); te
 .ftable tr.warn td, .ftable tr.warn .st { color: var(--amber); }
 .ftable tr.warn .st::before { content: "▲ "; }
 .ftable .num { text-align: right; color: var(--text); }
-.ftable .mis { color: var(--muted); }
-.batt { display: inline-block; width: 40px; height: 6px; background: var(--rule); vertical-align: middle; }
-.batt i { display: block; height: 100%; background: var(--accent); }
-.batt.low i { background: var(--amber); }
 .falert { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; padding: 9px 12px; border-top: 1px solid var(--rule-strong); background: rgba(255, 181, 71, .07); color: var(--amber); font-size: 11.5px; }
 .falert a { color: var(--accent); white-space: nowrap; }
 
@@ -332,17 +319,13 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
   .btn { width: 100%; }
   .card { padding: 0 18px 20px; }
   .yard text { font-size: 30px; }
-  .ftable .mis { display: none; }
-  .kpis { grid-template-columns: 1fr 1fr; }
-  .kpis div:nth-child(2) { border-right: 0; }
-  .kpis div:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
-  .fmap .id { font-size: 14px; }
+  .fmap .id { font-size: 16px; }
   .tgrid > div { padding: 6px 8px 7px; }
   .tgrid dd b { font-size: 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .cursor, .pulse { animation: none; }
+  .cursor { animation: none; }
   .yard .ring { animation: none; opacity: .35; }
 }
 </style>
@@ -400,29 +383,25 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
     </div>
 
     <figure class="fleet">
-      <div role="img" aria-label="Simulated fleet overview dashboard: a yard map and status table for six autonomous yard trucks. Four are moving or docking, one is charging, and one is stopped with an obstacle alert and an automatically captured data bag.">
+      <div role="img" aria-label="Simulated fleet dashboard: a yard map and status list for four autonomous yard trucks. Two are moving, one is charging, and one has stopped for an obstacle.">
         <div aria-hidden="true">
-          <div class="fleet-bar"><span>fleet-ops · overview · yard-02</span><b><span class="pulse">●</span> SIMULATED</b></div>
-          <div class="kpis"><div><span>trucks</span><b>6</b></div><div class="ok"><span>active</span><b>4</b></div><div><span>charging</span><b>1</b></div><div class="alert"><span>alerts</span><b>1</b></div></div>
-          <svg class="fmap" viewBox="0 0 480 240" focusable="false">
-          <path class="stall" d="M16 90H464M16 150H464M16 8V90M48 8V90M80 8V90M112 8V90M144 8V90M176 8V90M208 8V90M240 8V90M272 8V90M304 8V90M336 8V90M368 8V90M400 8V90M432 8V90M464 8V90M16 150V232M48 150V232M80 150V232M112 150V232M144 150V232M176 150V232M208 150V232M240 150V232M272 150V232M304 150V232M336 150V232M368 150V232M400 150V232M432 150V232M464 150V232"/>
-          <path class="lane" d="M0 120H480"/>
-          <g><use href="#trailer" transform="translate(32 88) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(64 88) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(128 88) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(192 88) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(224 88) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(288 88) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(352 88) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(384 88) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(32 152) rotate(-90) scale(0.5)"/><use href="#trailer" transform="translate(96 152) rotate(-90) scale(0.5)"/><use href="#trailer" transform="translate(128 152) rotate(-90) scale(0.5)"/><use href="#trailer" transform="translate(160 152) rotate(-90) scale(0.5)"/><use href="#trailer" transform="translate(256 152) rotate(-90) scale(0.5)"/><use href="#trailer" transform="translate(320 152) rotate(-90) scale(0.5)"/><use href="#trailer" transform="translate(352 152) rotate(-90) scale(0.5)"/></g>
-          <path class="plan" d="M84 105H4M226 135H326M426 135H476"/>
-          <g transform="translate(110 105) rotate(180) scale(0.5)"><use href="#trailer"/><use href="#tractor"/></g><g transform="translate(300 105) rotate(180) scale(0.5)"><use href="#trailer"/><use href="#tractor" style="--rig:var(--amber)"/></g><g transform="translate(448 92) rotate(90) scale(0.5)"><use href="#trailer"/><use href="#tractor"/></g><g transform="translate(200 135) rotate(0) scale(0.5)"><path d="M52 0L207.3 -69.1A170 170 0 0 1 207.3 69.1Z" fill="url(#cone-fill)"/><use href="#trailer"/><use href="#tractor"/></g><g transform="translate(400 135) rotate(0) scale(0.5)"><use href="#trailer"/><use href="#tractor"/></g><g transform="translate(448 190) rotate(-90) scale(0.5)"><use href="#tractor"/></g>
-          <circle class="ring-warn pulse" cx="290" cy="105" r="19"/>
-          <path d="M255 99l6 11h-12z" style="fill:var(--amber)"/>
-          <text class="id" x="97" y="96" text-anchor="middle">16</text>
-          <text class="id warn" x="287" y="96" text-anchor="middle">14</text>
-          <text class="id" x="436" y="114" text-anchor="end">09</text>
-          <text class="id" x="213" y="160" text-anchor="middle">07</text>
-          <text class="id" x="413" y="160" text-anchor="middle">03</text>
-          <text class="id" x="448" y="216" text-anchor="middle">11 ⚡</text>
+          <div class="fleet-bar"><span>fleet-ops · yard-02</span><b>SIMULATED</b></div>
+          <svg class="fmap" viewBox="0 0 480 222" focusable="false">
+          <path class="stall" d="M16 86H464M16 136H464M16 6V86M48 6V86M80 6V86M112 6V86M144 6V86M176 6V86M208 6V86M240 6V86M272 6V86M304 6V86M336 6V86M368 6V86M400 6V86M432 6V86M464 6V86M16 136V216M48 136V216M80 136V216M112 136V216M144 136V216M176 136V216M208 136V216M240 136V216M272 136V216M304 136V216M336 136V216M368 136V216M400 136V216M432 136V216M464 136V216"/>
+          <path class="lane" d="M0 111H480"/>
+          <g class="parked"><use href="#trailer" transform="translate(64 84) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(160 84) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(320 84) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(416 84) rotate(90) scale(0.5)"/><use href="#trailer" transform="translate(96 138) rotate(-90) scale(0.5)"/><use href="#trailer" transform="translate(224 138) rotate(-90) scale(0.5)"/><use href="#trailer" transform="translate(352 138) rotate(-90) scale(0.5)"/></g>
+          <path class="plan" d="M206 123H346"/>
+          <g transform="translate(330 99) rotate(180) scale(0.5)"><use href="#trailer"/><use href="#tractor" style="--rig:var(--amber)"/></g><g transform="translate(180 123) rotate(0) scale(0.5)"><path d="M52 0L207.3 -69.1A170 170 0 0 1 207.3 69.1Z" fill="url(#cone-fill)"/><use href="#trailer"/><use href="#tractor"/></g><g transform="translate(420 123) rotate(0) scale(0.5)"><use href="#trailer"/><use href="#tractor"/></g><g transform="translate(448 176) rotate(-90) scale(0.5)"><use href="#tractor"/></g>
+          <path d="M283 93l7 12h-14z" style="fill:var(--amber)"/>
+          <text class="id warn" x="317" y="86" text-anchor="middle">14</text>
+          <text class="id" x="167" y="146" text-anchor="middle">07</text>
+          <text class="id" x="407" y="146" text-anchor="middle">03</text>
+          <text class="id" x="448" y="208" text-anchor="middle">11 ⚡</text>
         </svg>
-          <table class="ftable"><thead><tr><th>id</th><th>state</th><th class="num">mph</th><th>batt</th><th class="mis">mission</th></tr></thead><tbody><tr><td>TRK-03</td><td class="st">MOVING</td><td class="num">9.8</td><td><span class="batt"><i style="width:91%"></i></span></td><td class="mis">0418 → door 12</td></tr><tr><td>TRK-07</td><td class="st">MOVING</td><td class="num">11.0</td><td><span class="batt"><i style="width:78%"></i></span></td><td class="mis">0412 → door 14</td></tr><tr><td>TRK-09</td><td class="st">DOCKING</td><td class="num">2.1</td><td><span class="batt"><i style="width:64%"></i></span></td><td class="mis">0415 → door 3</td></tr><tr><td>TRK-11</td><td class="st chg">CHARGING</td><td class="num">—</td><td><span class="batt low"><i style="width:31%"></i></span></td><td class="mis">—</td></tr><tr class="warn"><td>TRK-14</td><td class="st">STOPPED</td><td class="num">0.0</td><td><span class="batt"><i style="width:70%"></i></span></td><td class="mis">0420 · hold</td></tr><tr><td>TRK-16</td><td class="st">MOVING</td><td class="num">8.4</td><td><span class="batt"><i style="width:57%"></i></span></td><td class="mis">0421 → door 7</td></tr></tbody></table>
+          <table class="ftable"><thead><tr><th>truck</th><th>state</th><th class="num">mph</th></tr></thead><tbody><tr><td>TRK-03</td><td class="st">MOVING</td><td class="num">9.8</td></tr><tr><td>TRK-07</td><td class="st">MOVING</td><td class="num">11.0</td></tr><tr><td>TRK-11</td><td class="st chg">CHARGING</td><td class="num">—</td></tr><tr class="warn"><td>TRK-14</td><td class="st">STOPPED</td><td class="num">0.0</td></tr></tbody></table>
         </div>
       </div>
-      <figcaption class="falert"><span>▲ TRK-14 stopped: obstacle in aisle B · bag captured ✓</span><a href="#demo">watch one live ↓</a></figcaption>
+      <figcaption class="falert"><span>▲ TRK-14 stopped · obstacle ahead</span><a href="#demo">watch one live ↓</a></figcaption>
     </figure>
   </div>
 </section>
