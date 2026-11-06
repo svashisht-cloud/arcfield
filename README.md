@@ -1,6 +1,6 @@
 # Robotics fleet software: consulting site
 
-A one-page static site in a single `index.html` file, with all CSS inline. No framework, no build step, no JavaScript.
+A one-page static site in a single `index.html` file, with CSS and one small script inline. No framework, no build step, no dependencies. The only external requests are two Google Fonts (VT323 and IBM Plex Mono).
 
 ## Edit
 
@@ -11,9 +11,16 @@ A one-page static site in a single `index.html` file, with all CSS inline. No fr
 Unfilled placeholders are highlighted in amber on the rendered page, so they're hard to miss.
 
 Where things are:
-- **Colors**: CSS custom properties at the top of `<style>` (`:root` for light mode, the `prefers-color-scheme: dark` block for dark mode). `--accent` is the green.
+- **Theme**: dark terminal only. Colors are CSS custom properties in `:root` at the top of `<style>` (`--accent` is the phosphor green, `--amber` is used for warnings). The scanline/vignette overlay is `body::after`.
+- **Fonts**: VT323 (`--display`) is for large display text only: headings, big numbers and the brand. IBM Plex Mono (`--mono`) is for everything else. They're loaded from Google Fonts in `<head>`.
 - **Sections**: each has an `id` (`top`, `work`, `demo`, `services`, `process`, `about`, `contact`) and plain HTML structure. Copy a `.card` to add a case study.
-- **Demo**: an inline SVG animation (`#demo`, `<svg class="yard">`). Speed is the `dur` on the two `<animateMotion>` elements (keep them equal), and the route is their `path`. The `.still` group is the static frame shown to visitors who prefer reduced motion. To use a real recording instead, replace the `<svg>` with one of the snippets in the HTML comment above it.
+- **Demo** (`#demo`): a small simulation in the `<script>` at the bottom of the page drives the yard SVG, the telemetry panel and the logs from a single state.
+  - The route is the `#route` path in the SVG.
+  - Speeds are set in `targetSpeed()`.
+  - Log messages are in `startMission()`, `events()` and `finishMission()`.
+  - Parked and hitched trailers both use the `#trailer` drawing, so editing it changes all of them.
+  - Without JS, or with reduced motion, the initial `transform`s and the snapshot values in the HTML show as a still frame.
+  - To use a real recording instead, replace the `<svg>` with one of the snippets in the HTML comment above `.sim`.
 
 ## Preview locally
 
