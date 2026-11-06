@@ -5,8 +5,8 @@ A one-page static site in a single `index.html` file, with all CSS inline. No fr
 ## Edit
 
 1. Open `index.html` in any editor.
-2. Fill in every placeholder listed in [`TODO.md`](TODO.md). Each one contains `TODO`.
-3. Before publishing, run `grep -n TODO index.html`. It should print nothing.
+2. Fill in every placeholder listed in [`TODO.md`](TODO.md). Each one is `{{TODO: …}}` text or a `#TODO-…` link.
+3. Before publishing, run `grep -n 'TODO[:-]' index.html`. It should print nothing. (Plain `grep TODO` also matches the CSS that highlights placeholders.)
 
 Unfilled placeholders are highlighted in amber on the rendered page, so they're hard to miss.
 

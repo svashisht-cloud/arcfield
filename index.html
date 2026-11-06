@@ -152,13 +152,15 @@ h2 { font-size: clamp(28px, 4vw, 40px); max-width: 22ch; }
 
 /* Cards */
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+.grid3.grid2 { grid-template-columns: repeat(2, 1fr); }
 .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 18px; }
 .card h3 { font-size: 21px; }
-.card .tag { font: 500 12px/1 var(--mono); color: var(--muted); }
+.card .tag { font: 500 12px/1 var(--mono); color: var(--muted); margin-top: -10px; }
 .card dl { margin: 0; display: grid; gap: 14px; }
 .card dt { font: 600 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .card dd { margin: 0; font-size: 15.5px; }
 .card dd.result { border-top: 1px solid var(--rule); padding-top: 14px; }
+.card dd.result strong { font: 700 1.15em/1 var(--mono); color: var(--accent); }
 .dur { align-self: flex-start; font: 600 12px/1 var(--mono); color: var(--accent); background: var(--accent-soft); padding: 6px 9px; border-radius: 999px; }
 .card p { font-size: 15.5px; color: var(--muted); }
 
@@ -199,7 +201,7 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
 
 @media (max-width: 860px) {
   .hero .wrap, .about .wrap { grid-template-columns: 1fr; }
-  .grid3, .steps { grid-template-columns: 1fr; }
+  .grid3, .grid3.grid2, .steps { grid-template-columns: 1fr; }
   .schematic { max-width: 520px; }
 }
 @media (max-width: 480px) {
@@ -230,7 +232,7 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
       <p class="cred">Built and rolled out this stack for autonomous yard trucks at Outrider.</p>
       <div class="btns">
         <a class="btn" href="#TODO-booking-link">Book a 20-min call <span aria-hidden="true">→</span></a>
-        <a class="link-mono" href="mailto:TODO-email"><mark class="todo">{{TODO: email}}</mark></a>
+        <a class="link-mono" href="mailto:shubhv2@gmail.com">shubhv2@gmail.com</a>
       </div>
     </div>
 
@@ -264,14 +266,14 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
   <div class="wrap">
     <p class="label"><b>01</b> / Work</p>
     <h2 id="work-h">Fleet tooling I've built and run in production</h2>
-    <p class="lede">From four years building software for autonomous yard trucks at Outrider. Each card is problem → what I built → result.</p>
-    <div class="grid3">
+    <p class="lede">Mostly from four years building software for autonomous yard trucks at Outrider. Each card is problem → what I built → result.</p>
+    <div class="grid3 grid2">
       <article class="card">
         <h3>Fleet ops dashboard</h3>
         <dl>
           <div><dt>Problem</dt><dd>Dispatchers running autonomous trucks during customer rollouts needed one place to see, control and debug the fleet.</dd></div>
-          <div><dt>What I built</dt><dd>A full-stack dashboard for robot control, logs, telemetry and live video, with a Three.js 3D view of the yard. Used by dispatchers during rollouts at production customer yards.</dd></div>
-          <div><dt>Result</dt><dd class="result"><mark class="todo">{{TODO: real number, e.g. yards/trucks it ran on}}</mark></dd></div>
+          <div><dt>What I built</dt><dd>A full-stack dashboard for robot control, logs, telemetry and live video, with a Three.js 3D view of the yard and a React-based vehicle reprogramming view. Used by dispatchers during rollouts at production customer yards.</dd></div>
+          <div><dt>Result</dt><dd class="result"><strong>2×</strong> faster vehicle reprogramming.</dd></div>
         </dl>
       </article>
       <article class="card">
@@ -279,7 +281,7 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
         <dl>
           <div><dt>Problem</dt><dd>Recording all LiDAR all the time is expensive to store and move, and the moments engineers need get buried.</dd></div>
           <div><dt>What I built</dt><dd>LiDAR recording triggered by events instead of recording everything, plus mission-bag upload to S3 so engineers could pull the data and debug field issues.</dd></div>
-          <div><dt>Result</dt><dd class="result"><mark class="todo">{{TODO: result}}</mark></dd></div>
+          <div><dt>Result</dt><dd class="result"><strong>90%</strong> smaller ROS bags by recording only high-value topics. <strong>50%</strong> less time to access field data after improving bag recording and cloud upload.</dd></div>
         </dl>
       </article>
       <article class="card">
@@ -288,6 +290,15 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
           <div><dt>Problem</dt><dd>Config drift and hard-to-reach logs turn small field issues into long debugging sessions.</dd></div>
           <div><dt>What I built</dt><dd>On-truck configuration verification before missions, live log streaming and a subscription-based logger. I also wrote the debugging docs other teams used.</dd></div>
           <div><dt>Result</dt><dd class="result"><mark class="todo">{{TODO: result}}</mark></dd></div>
+        </dl>
+      </article>
+      <article class="card">
+        <h3>Robotic-arm 3D visualization</h3>
+        <span class="tag">Earlier project</span>
+        <dl>
+          <div><dt>Problem</dt><dd><mark class="todo">{{TODO: robotic-arm problem, 1 sentence}}</mark></dd></div>
+          <div><dt>What I built</dt><dd>A 3D visualization of a robotic arm. <mark class="todo">{{TODO: robotic-arm what I built, 1–2 sentences}}</mark></dd></div>
+          <div><dt>Result</dt><dd class="result"><strong>85%</strong> performance improvement.</dd></div>
         </dl>
       </article>
     </div>
@@ -374,7 +385,7 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: w
     <p class="lede">Twenty minutes is enough to tell whether I can help.</p>
     <div class="btns">
       <a class="btn" href="#TODO-booking-link">Book a 20-min call <span aria-hidden="true">→</span></a>
-      <a class="link-mono" href="mailto:TODO-email"><mark class="todo">{{TODO: email}}</mark></a>
+      <a class="link-mono" href="mailto:shubhv2@gmail.com">shubhv2@gmail.com</a>
     </div>
   </div>
 </section>
