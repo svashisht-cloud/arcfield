@@ -13,7 +13,8 @@ Unfilled placeholders are highlighted in amber on the rendered page, so they're 
 Where things are:
 - **Theme**: dark terminal only. Colors are CSS custom properties in `:root` at the top of `<style>` (`--accent` is the phosphor green, `--amber` is used for warnings). The scanline/vignette overlay is `body::after`.
 - **Fonts**: VT323 (`--display`) is for large display text only: headings, big numbers and the brand. IBM Plex Mono (`--mono`) is for everything else. They're loaded from Google Fonts in `<head>`.
-- **Sections**: each has an `id` (`top`, `work`, `demo`, `services`, `process`, `about`, `contact`) and plain HTML structure. Copy a `.card` to add a case study.
+- **Sections**: each has an `id` (`top`, `work`, `demo`, `services`, `process`, `about`, `contact`) and plain HTML structure.
+- **Case studies** (`#work`): a split-pane list + detail view. To add one, copy a `<button role="tab">` and its `<article role="tabpanel">`, then bump the numbers in `id`, `aria-controls` and `aria-labelledby` (`cs-tab-5` ↔ `cs-5`). Mark only the first panel with class `on`. Keyboard navigation (arrows, Home/End, 1–9) works automatically. Without JS, all panels show stacked.
 - **Demo** (`#demo`): a small simulation in the `<script>` at the bottom of the page drives the yard SVG, the telemetry panel and the logs from a single state.
   - The route is the `#route` path in the SVG.
   - Speeds are set in `targetSpeed()`.
