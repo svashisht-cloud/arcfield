@@ -15,15 +15,13 @@ grep -n 'TODO[:-]' index.html
 - [x] **Email**: shubhv2@gmail.com (hero and final CTA)
 - [x] **Booking link**: https://calendly.com/shubhv2/30min (both buttons; copy says 30-min call)
 - [x] **LinkedIn**: https://www.linkedin.com/in/shubh-vashisht/
-- [x] **Demo**: live simulation of a yard truck + trailer with a sensor cone, plus telemetry and log panels. Optional later: swap for a real 60–90s screen recording (snippets in the HTML comment above the SVG).
+- [x] **GitHub**: https://github.com/svashisht-cloud (footer)
+- [x] **Location line**: removed from About (by choice)
+- [x] **Demo**: live simulation of an AV (yard truck) + trailer with a sensor cone, plus telemetry and log panels. Optional later: swap for a real 60–90s screen recording (snippets in the HTML comment above the SVG).
 - [x] **Fleet ops dashboard result**: 2× faster vehicle reprogramming (React-based reprogramming view)
 - [x] **Event-triggered data capture result**: 90% smaller ROS bags (selective recording of high-value topics); 50% less time to access data (bag recording and cloud-upload improvements)
 - [x] **Robotic-arm card**: problem, what I built, ~85% visualization performance result
 - [x] **Field reliability tooling result**: config-mismatch detection, selective log subscriptions, faster remote debugging
-
-## Identity
-- [ ] **GitHub URL**: search `#TODO-github` (footer).
-- [ ] **Location / hours line**: search `{{TODO: e.g. "Remote` (About section).
 
 ## Case studies
 Re-read the **Problem** lines on the first three case-study cards (Claude drafted them) and make sure they match what really happened.

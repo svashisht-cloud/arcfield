@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fleet software for robotics teams | Arcfield</title>
-<meta name="description" content="I build the ops dashboards, live telemetry and log pipelines your robots need in the field, so your autonomy engineers can stay on autonomy. Built and rolled out this stack for autonomous yard trucks at Outrider.">
+<meta name="description" content="I build the ops dashboards, live telemetry and log pipelines your robots need in the field, so your autonomy engineers can stay on autonomy.">
 <link rel="canonical" href="{{TODO: https://your-domain.com/}}">
 <meta name="theme-color" content="#0a0f0b">
 <meta name="color-scheme" content="dark">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Arcfield">
 <meta property="og:title" content="Fleet software for robotics teams">
-<meta property="og:description" content="Ops dashboards, live telemetry and log pipelines for robots in the field. Built and rolled out this stack for autonomous yard trucks at Outrider.">
+<meta property="og:description" content="Ops dashboards, live telemetry and log pipelines for robots in the field.">
 <meta property="og:url" content="{{TODO: https://your-domain.com/}}">
 <meta property="og:image" content="{{TODO: https://your-domain.com/og.png}}">
 <meta property="og:image:width" content="1200">
@@ -143,8 +143,7 @@ h2 { font: 400 clamp(40px, 5.4vw, 60px)/1 var(--display); color: var(--text); te
 .hero .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
 .hero h1 { font: 400 clamp(50px, 6vw, 78px)/.95 var(--display); color: var(--accent); text-shadow: var(--glow); max-width: 18ch; letter-spacing: -.005em; }
 .hero .sub { font-size: clamp(16px, 1.6vw, 18px); color: var(--text); max-width: 50ch; margin-top: 26px; }
-.cred { margin: 22px 0 34px; padding: 10px 14px; border-left: 2px solid var(--accent); background: var(--accent-soft); font-size: 14.5px; max-width: 52ch; }
-.cred::before { content: "# "; color: var(--accent); }
+.hero .btns { margin-top: 36px; }
 /* Hero: static fleet overview (simulated) */
 .fleet { margin: 0; border: 1px solid var(--rule-strong); background: var(--surface); font-size: 12px; box-shadow: 0 24px 60px rgba(0,0,0,.45); }
 .fleet-bar { display: flex; justify-content: space-between; gap: 10px; padding: 8px 12px; border-bottom: 1px solid var(--rule-strong); background: var(--raise); color: var(--muted); font-size: 11.5px; }
@@ -283,7 +282,6 @@ h2 { font: 400 clamp(40px, 5.4vw, 60px)/1 var(--display); color: var(--text); te
 /* About */
 .about .wrap { display: grid; grid-template-columns: 1fr 1.7fr; gap: clamp(24px, 5vw, 64px); }
 .about-text { display: grid; gap: 18px; font-size: 16px; }
-.about-text .loc { font-size: 14px; color: var(--muted); }
 
 /* CTA + footer */
 .cta h2 { max-width: 20ch; }
@@ -375,7 +373,6 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
       <p class="prompt"><span class="u">arcfield@yard</span>:<span class="p">~</span>$ cat README.md</p>
       <h1 id="hero-h">Fleet software for robotics teams<span class="cursor" aria-hidden="true"></span></h1>
       <p class="sub">I build the ops dashboards, live telemetry and log pipelines your robots need in the field, so your autonomy engineers can stay on autonomy.</p>
-      <p class="cred">Built and rolled out this stack for autonomous yard trucks at Outrider.</p>
       <div class="btns">
         <a class="btn" href="https://calendly.com/shubhv2/30min" rel="noopener">Book a 30-min call</a>
         <a class="mail" href="mailto:shubhv2@gmail.com">shubhv2@gmail.com</a>
@@ -383,7 +380,7 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
     </div>
 
     <figure class="fleet">
-      <div role="img" aria-label="Simulated fleet dashboard: a yard map and status list for four autonomous yard trucks. Two are moving, one is charging, and one has stopped for an obstacle.">
+      <div role="img" aria-label="Simulated fleet dashboard: a yard map and status list for four AVs. Two are moving, one is charging, and one has stopped for an obstacle.">
         <div aria-hidden="true">
           <div class="fleet-bar"><span>fleet-ops · yard-02</span><b>SIMULATED</b></div>
           <svg class="fmap" viewBox="0 0 480 222" focusable="false">
@@ -398,10 +395,10 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
           <text class="id" x="407" y="146" text-anchor="middle">03</text>
           <text class="id" x="448" y="208" text-anchor="middle">11 ⚡</text>
         </svg>
-          <table class="ftable"><thead><tr><th>truck</th><th>state</th><th class="num">mph</th></tr></thead><tbody><tr><td>TRK-03</td><td class="st">MOVING</td><td class="num">9.8</td></tr><tr><td>TRK-07</td><td class="st">MOVING</td><td class="num">11.0</td></tr><tr><td>TRK-11</td><td class="st chg">CHARGING</td><td class="num">—</td></tr><tr class="warn"><td>TRK-14</td><td class="st">STOPPED</td><td class="num">0.0</td></tr></tbody></table>
+          <table class="ftable"><thead><tr><th>av</th><th>state</th><th class="num">mph</th></tr></thead><tbody><tr><td>AV-03</td><td class="st">MOVING</td><td class="num">9.8</td></tr><tr><td>AV-07</td><td class="st">MOVING</td><td class="num">11.0</td></tr><tr><td>AV-11</td><td class="st chg">CHARGING</td><td class="num">—</td></tr><tr class="warn"><td>AV-14</td><td class="st">STOPPED</td><td class="num">0.0</td></tr></tbody></table>
         </div>
       </div>
-      <figcaption class="falert"><span>▲ TRK-14 stopped · obstacle ahead</span><a href="#demo">watch one live ↓</a></figcaption>
+      <figcaption class="falert"><span>▲ AV-14 stopped · obstacle ahead</span><a href="#demo">watch one live ↓</a></figcaption>
     </figure>
   </div>
 </section>
@@ -410,7 +407,7 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
   <div class="wrap">
     <p class="prompt"><span class="u">arcfield@yard</span>:<span class="p">~/work</span>$ ls ./case-studies</p>
     <h2 id="work-h">Fleet tooling I've built and run in production</h2>
-    <p class="lede">Mostly from four years building software for autonomous yard trucks at Outrider. Pick a project to see the details.</p>
+    <p class="lede">Mostly from five years building software for autonomous yard trucks at Outrider. Pick a project to see the details.</p>
     <div class="tui">
       <div class="tui-bar" aria-hidden="true"><span>~/work/case-studies</span><b>4 items</b></div>
       <div class="tui-body">
@@ -480,12 +477,12 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
 
 <section id="demo" aria-labelledby="demo-h">
   <div class="wrap">
-    <p class="prompt"><span class="u">arcfield@yard</span>:<span class="p">~/demo</span>$ ./fleet-sim --truck TRK-07</p>
+    <p class="prompt"><span class="u">arcfield@yard</span>:<span class="p">~/demo</span>$ ./fleet-sim --av AV-07</p>
     <h2 id="demo-h">A simulated fleet dashboard</h2>
     <p class="lede">A small simulation of the kind of tooling I build: a yard truck towing a trailer, with its telemetry and service logs updating live from the same sim. All data is simulated.</p>
 
     <div class="console">
-      <div class="console-bar" aria-hidden="true"><i></i><i></i><i></i><span class="ttl">fleet-ops — TRK-07 — simulated</span><span class="live">● SIM · 2× playback</span></div>
+      <div class="console-bar" aria-hidden="true"><i></i><i></i><i></i><span class="ttl">fleet-ops — AV-07 — simulated</span><span class="live">● SIM · 2× playback</span></div>
       <div class="console-body">
         <!--
           To show a real screen recording instead, replace the whole .sim div's <svg> with ONE of:
@@ -493,7 +490,7 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
           <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Fleet dashboard demo" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         -->
         <div class="sim">
-          <svg class="yard" viewBox="0 0 960 540" role="img" aria-label="Simulated yard: an autonomous truck towing a trailer down the aisle between rows of parked trailers, changing lanes, with its sensor field sweeping ahead">
+          <svg class="yard" viewBox="0 0 960 540" role="img" aria-label="Simulated yard: an AV towing a trailer down the aisle between rows of parked trailers, changing lanes, with its sensor field sweeping ahead">
 
             <path class="stall" d="M32 200H928M32 340H928M32 40V200M96 40V200M160 40V200M224 40V200M288 40V200M352 40V200M416 40V200M480 40V200M544 40V200M608 40V200M672 40V200M736 40V200M800 40V200M864 40V200M928 40V200M32 340V500M96 340V500M160 340V500M224 340V500M288 340V500M352 340V500M416 340V500M480 340V500M544 340V500M608 340V500M672 340V500M736 340V500M800 340V500M864 340V500M928 340V500"/>
             <path class="lane" d="M0 270H960"/>
@@ -510,14 +507,14 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
               <use href="#tractor"/>
             </g>
 
-            <text x="24" y="28" class="live">● TRK-07 · AUTONOMOUS</text>
+            <text x="24" y="28" class="live">● AV-07 · AUTONOMOUS</text>
             <text x="936" y="28" text-anchor="end">AISLE B</text>
             <text x="24" y="528">SIMULATED · 2× PLAYBACK</text>
           </svg>
         </div>
 
         <div class="side" aria-hidden="true">
-          <div class="pane-h"><span>telemetry · TRK-07</span><b>● live</b></div>
+          <div class="pane-h"><span>telemetry · AV-07</span><b>● live</b></div>
           <dl class="tgrid">
             <div><dt>speed</dt><dd><b id="t-spd">11.0</b> mph</dd></div>
             <div><dt>heading</dt><dd><b id="t-hdg">090</b>°</dd></div>
@@ -535,7 +532,7 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
           <div class="logs-pane">
             <div class="pane-h"><span>logs · all services</span><b>tail -f</b></div>
             <div class="logs" id="logs">
-              <div class="l"><span class="ts">09:41:02.118</span> <span class="svc">[fleet-mgr]</span> <span class="lv">INFO</span> dispatch mission-0412 → TRK-07</div>
+              <div class="l"><span class="ts">09:41:02.118</span> <span class="svc">[fleet-mgr]</span> <span class="lv">INFO</span> dispatch mission-0412 → AV-07</div>
               <div class="l"><span class="ts">09:41:02.264</span> <span class="svc">[config-check]</span> <span class="lv">INFO</span> pre-mission check: 42/42 params match baseline</div>
               <div class="l"><span class="ts">09:41:09.530</span> <span class="svc">[planner]</span> <span class="lv">INFO</span> lane change requested: lane 1 → lane 2</div>
               <div class="l"><span class="ts">09:41:09.551</span> <span class="svc">[bag-recorder]</span> <span class="lv">INFO</span> event trigger lane_change → recording 10 s window</div>
@@ -543,7 +540,7 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
             </div>
           </div>
         </div>
-        <p class="sr">Beside the yard view, a telemetry panel shows the simulated truck's speed, heading, position, battery and sensor health, and a log panel streams simulated messages from its planner, perception, bag recorder and uploader services.</p>
+        <p class="sr">Beside the yard view, a telemetry panel shows the simulated AV's speed, heading, position, battery and sensor health, and a log panel streams simulated messages from its planner, perception, bag recorder and uploader services.</p>
       </div>
     </div>
   </div>
@@ -597,7 +594,6 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
       <p>I spent about five years at Outrider AI building software for autonomous yard trucks, starting as an intern and moving up to Associate Software Engineer and then Software Engineer II.</p>
       <p>I built the fleet tooling, went on-site to roll it out at production customer yards, and took on-call shifts for incidents in the field.</p>
       <p>I also build and run Forte, an AI resume-tailoring SaaS with about 100 active users.</p>
-      <p class="loc"><mark class="todo">{{TODO: e.g. "Remote, based in India, with daily overlap with US hours"}}</mark></p>
     </div>
   </div>
 </section>
@@ -621,7 +617,7 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
     <span>© 2026 Arcfield</span>
     <ul>
       <li><a href="https://www.linkedin.com/in/shubh-vashisht/" rel="noopener">LinkedIn</a></li>
-      <li><a href="#TODO-github">GitHub</a></li>
+      <li><a href="https://github.com/svashisht-cloud" rel="noopener">GitHub</a></li>
     </ul>
   </div>
 </footer>
@@ -693,7 +689,7 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
     const p = route.getPointAtLength(0);
     rear = { x: p.x - TRAILER, y: p.y };
     const id = String(mission).padStart(4, '0');
-    log('fleet-mgr', 'INFO', `dispatch mission-${id} → TRK-07 (trailer T-${1180 + mission % 17} to door ${10 + mission % 9})`);
+    log('fleet-mgr', 'INFO', `dispatch mission-${id} → AV-07 (trailer T-${1180 + mission % 17} to door ${10 + mission % 9})`);
     log('config-check', 'INFO', `pre-mission check: 42/42 params match baseline`);
     log('planner', 'INFO', `route planned: ${(total / 10).toFixed(1)} m, 1 lane change`);
   }
@@ -727,7 +723,7 @@ h1, h2, h3, .brand, .own, .tgrid dd b, .res b { font-variant-ligatures: none; }
       const beats = [
         () => log('telemetry', 'DEBUG', `publish 20 Hz · 14 topics · link ${Math.round(rnd(30, 55))} ms`),
         () => log('logger', 'INFO', 'subscribers: dashboard, uploader (3/11 topics)'),
-        () => log('fleet-mgr', 'DEBUG', `heartbeat TRK-07 ok · TRK-03 ok · TRK-11 charging`),
+        () => log('fleet-mgr', 'DEBUG', `heartbeat AV-07 ok · AV-03 ok · AV-11 charging`),
       ];
       beats[beat++ % beats.length]();
     }
