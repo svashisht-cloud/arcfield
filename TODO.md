@@ -17,7 +17,7 @@ grep -n 'TODO[:-]' index.html
 - [x] **LinkedIn**: https://www.linkedin.com/in/shubh-vashisht/
 - [x] **GitHub**: https://github.com/svashisht-cloud (footer)
 - [x] **Location line**: removed from About (by choice)
-- [x] **Demo**: live simulation of an AV (yard truck) + trailer with a sensor cone, plus telemetry and log panels. Optional later: swap for a real 60–90s screen recording (snippets in the HTML comment above the SVG).
+- [x] **Demo**: three live simulations in one console (tabs + swipe), each with telemetry and log panels, driven by `sim.js`: yard (AV-07 overtakes a stalled trailer while AV-03 yields), warehouse (AMRs with traffic-manager cell reservations), city (RT-21 robotaxi pickup + unprotected left). Optional later: swap a panel for a real 60–90s screen recording (snippets in the HTML comment above the scenario track).
 - [x] **Fleet ops dashboard result**: 2× faster vehicle reprogramming (React-based reprogramming view)
 - [x] **Event-triggered data capture result**: 90% smaller ROS bags (selective recording of high-value topics); 50% less time to access data (bag recording and cloud-upload improvements)
 - [x] **Robotic-arm card**: problem, what I built, ~85% visualization performance result
